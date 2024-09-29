@@ -11,7 +11,6 @@ class TabletHome extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenWidthMob = MediaQuery.of(context).size.width;
     double paddingValue = PaddingLeftRight.getPaddingleftRight(screenWidthMob);
-    print("Padding inside tablet HOME : $paddingValue");
 
     double widthOfIntro = screenWidthMob > 840 ? 370 : 330;
     double fontSizeOfTitle = screenWidthMob > 840 ? 32 : 30;

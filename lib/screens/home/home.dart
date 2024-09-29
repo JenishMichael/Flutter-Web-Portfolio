@@ -4,6 +4,7 @@ import 'package:flutter_portfolio/screens/mobile_screen.dart';
 import 'package:flutter_portfolio/screens/tablet_screen.dart';
 
 import 'package:flutter_portfolio/widgets/drawer_app_bar.dart';
+import 'package:flutter_portfolio/widgets/loading.dart';
 import 'package:flutter_portfolio/widgets/responsive_builder.dart';
 
 final GlobalKey homeKey = GlobalKey();
@@ -20,6 +21,10 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+
+  Future<void> fetchDate() async {
+    await Future.delayed(const Duration(seconds: 1));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,11 +48,19 @@ class _HomeState extends State<Home> {
           child: const DrawerAppBar(),
         ),
       ),
-      body: ResponsiveBuilder(
-        mobile: MobileScreen(scaffoldKey: scaffoldKey),
-        tablet: TabletScreen(scaffoldKey: scaffoldKey),
-        desktop: DesktopScreen(scaffoldKey: scaffoldKey),
-      ),
+      body: FutureBuilder(
+          future: fetchDate(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Loading();
+            } else {
+              return ResponsiveBuilder(
+                mobile: MobileScreen(scaffoldKey: scaffoldKey),
+                tablet: TabletScreen(scaffoldKey: scaffoldKey),
+                desktop: DesktopScreen(scaffoldKey: scaffoldKey),
+              );
+            }
+          }),
     );
   }
 }

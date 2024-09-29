@@ -3,6 +3,7 @@ import 'package:flutter_portfolio/constants/custom_color.dart';
 import 'package:flutter_portfolio/constants/heading_list.dart';
 import 'package:flutter_portfolio/constants/padding_left_right.dart';
 import 'package:flutter_portfolio/screens/home/home.dart';
+import 'dart:html' as html;
 
 class DesktopViewHeader extends StatelessWidget {
   const DesktopViewHeader({super.key});
@@ -44,7 +45,7 @@ class DesktopViewHeader extends StatelessWidget {
                   cursor: SystemMouseCursors.click,
                   child: GestureDetector(
                     onTap: () {
-                      // html.window.location.reload();
+                      html.window.location.reload();
                     },
                     child: const Text(
                       'JM',
@@ -69,14 +70,14 @@ class DesktopViewHeader extends StatelessWidget {
                         switch (i) {
                           case 0:
                             Scrollable.ensureVisible(homeKey.currentContext!,
-                                duration: Duration(seconds: 1),
+                                duration: const Duration(seconds: 1),
                                 curve: Curves.easeInOut);
 
                             break;
                           case 1:
                             Scrollable.ensureVisible(
                               aboutMeKey.currentContext!,
-                              duration: Duration(seconds: 1),
+                              duration: const Duration(seconds: 1),
                               curve: Curves.easeInOut,
                             );
 
@@ -84,7 +85,7 @@ class DesktopViewHeader extends StatelessWidget {
                           case 2:
                             Scrollable.ensureVisible(
                               skillskey.currentContext!,
-                              duration: Duration(seconds: 1),
+                              duration: const Duration(seconds: 1),
                               curve: Curves.easeInOut,
                             );
 

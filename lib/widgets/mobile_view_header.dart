@@ -11,7 +11,6 @@ class HeaderViewHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenWidthMob = MediaQuery.of(context).size.width;
     double paddingValue = PaddingLeftRight.getPaddingleftRight(screenWidthMob);
-    print(paddingValue);
     return SafeArea(
       child: Container(
         margin: EdgeInsets.only(
@@ -44,7 +43,7 @@ class HeaderViewHeader extends StatelessWidget {
                   cursor: SystemMouseCursors.click,
                   child: GestureDetector(
                     onTap: () {
-                      // html.window.location.reload();
+                      //  html.window.location.reload();
                     },
                     child: const Text(
                       'JM',

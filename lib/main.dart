@@ -4,6 +4,7 @@ import 'package:flutter_portfolio/screens/home/home.dart';
 void main() {
   runApp(
     MaterialApp(
+      title: "Jenish Michael",
       debugShowCheckedModeBanner: false,
       theme: ThemeData.light().copyWith(
         primaryColor: Colors.orange,

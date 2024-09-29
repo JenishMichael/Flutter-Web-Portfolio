@@ -30,20 +30,18 @@ class _ContactContainerBuilderState extends State<ContactContainerBuilder> {
                 switch (i) {
                   case 0:
                     String emailId = "jenishmichael21@gmail.com";
-                    print("Inside case 0");
                     Uri emailUri = Uri(
                       scheme: "mailto",
                       path: emailId,
                     );
                     Future<void> emailLaunch() async {
-                      print("Inside Method");
                       if (await canLaunchUrl(emailUri)) {
-                        print("Inside If Method");
                         await launchUrl(
                           emailUri,
                         );
-                        print("After Launch If");
-                      } else {}
+                      } else {
+                        print("Not able to launch Email");
+                      }
                     }
                     emailLaunch();
                     break;
@@ -55,7 +53,9 @@ class _ContactContainerBuilderState extends State<ContactContainerBuilder> {
                     Future<void> whatsAppLaunch() async {
                       if (await canLaunchUrl(uri)) {
                         await launchUrl(uri);
-                      } else {}
+                      } else {
+                         print("Not able to launch WhatsApp");
+                      }
                     }
                     whatsAppLaunch();
                     break;
@@ -66,7 +66,9 @@ class _ContactContainerBuilderState extends State<ContactContainerBuilder> {
                     Future<void> dialerLaunch() async {
                       if (await canLaunchUrl(uriDial)) {
                         await launchUrl(uriDial);
-                      } else {}
+                      } else {
+                         print("Not able to launch Dialer App");
+                      }
                     }
                     dialerLaunch();
                 }

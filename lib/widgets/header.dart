@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/constants/padding_left_right.dart';
+// import 'dart:html' as html;
+
 
 class Header extends StatelessWidget {
   final GlobalKey<ScaffoldState> scaffoldKey;
@@ -9,7 +11,6 @@ class Header extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenWidthMob = MediaQuery.of(context).size.width;
     double paddingValue = PaddingLeftRight.getPaddingleftRight(screenWidthMob);
-    print(paddingValue);
     return SafeArea(
       child: Container(
         margin: EdgeInsets.only(

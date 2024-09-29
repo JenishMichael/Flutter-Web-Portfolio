@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_portfolio/constants/cv.dart';
 import 'package:flutter_portfolio/constants/padding_left_right.dart';
 import 'package:flutter_portfolio/screens/home/home.dart';
 import 'package:flutter_portfolio/widgets/separtor.dart';
@@ -73,7 +74,9 @@ class MobileAboutMe extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(top: 12, bottom: 12),
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        return CV.downloadCv();
+                      },
                       child: const Text(
                         "Download CV",
                       ),

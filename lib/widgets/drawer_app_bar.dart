@@ -32,7 +32,7 @@ class DrawerAppBar extends StatelessWidget {
                     switch (index) {
                       case 0:
                         Scrollable.ensureVisible(homeKey.currentContext!,
-                            duration: Duration(seconds: 1),
+                            duration: const Duration(seconds: 1),
                             curve: Curves.easeInOut);
                         Navigator.of(context).pop();
 
@@ -40,7 +40,7 @@ class DrawerAppBar extends StatelessWidget {
                       case 1:
                         Scrollable.ensureVisible(
                           aboutMeKey.currentContext!,
-                          duration: Duration(seconds: 1),
+                          duration: const Duration(seconds: 1),
                           curve: Curves.easeInOut,
                         );
                         Navigator.of(context).pop();
@@ -48,7 +48,7 @@ class DrawerAppBar extends StatelessWidget {
                       case 2:
                         Scrollable.ensureVisible(
                           skillskey.currentContext!,
-                          duration: Duration(seconds: 1),
+                          duration:const Duration(seconds: 1),
                           curve: Curves.easeInOut,
                         );
                         Navigator.of(context).pop();

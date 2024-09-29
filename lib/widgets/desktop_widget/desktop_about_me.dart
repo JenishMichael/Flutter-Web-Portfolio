@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_portfolio/constants/cv.dart';
 import 'package:flutter_portfolio/constants/padding_left_right.dart';
 import 'package:flutter_portfolio/screens/home/home.dart';
 import 'package:flutter_portfolio/widgets/separtor.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DesktopAboutMe extends StatelessWidget {
   const DesktopAboutMe({super.key});
@@ -77,7 +79,9 @@ class DesktopAboutMe extends StatelessWidget {
                       width: screenWidthMob < 1500 ? 150 : 200,
                       height: screenWidthMob < 150 ? 22 : 35,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          return CV.downloadCv();
+                        },
                         child: const Text(
                           "Download CV",
                         ),
