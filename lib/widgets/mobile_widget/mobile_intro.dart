@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/constants/custom_color.dart';
 import 'package:flutter_portfolio/constants/padding_left_right.dart';
+import 'package:flutter_portfolio/provider/theme_provider.dart';
 import 'package:flutter_portfolio/screens/home/home.dart';
+import 'package:flutter_portfolio/widgets/themes_data.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class IntroMessage extends StatelessWidget {
@@ -9,6 +12,7 @@ class IntroMessage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeData themeDataValue = context.watch<ThemeProvider>().themeData;
     double screenWidthMob = MediaQuery.of(context).size.width;
     double paddingValue = PaddingLeftRight.getPaddingleftRight(screenWidthMob);
     return Column(
@@ -26,7 +30,7 @@ class IntroMessage extends StatelessWidget {
               const Text(
                 "Hy! I Am\nJenish Michael Dev",
                 style: TextStyle(
-                    color: CustomColor.titleDarkblue,
+                    color: CustomColor.AppBarBtnLight,
                     fontSize: 30,
                     fontWeight: FontWeight.w600),
               ),
@@ -60,13 +64,19 @@ class IntroMessage extends StatelessWidget {
           ),
         ),
         Container(
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [
-                Colors.white,
-                Color.fromARGB(255, 226, 189, 133),
-                // Color.fromARGB(255, 117, 178, 219)
-              ],
+              colors: (themeDataValue == lightTheme)
+                  ? [
+                      Colors.white,
+                      const Color.fromARGB(255, 226, 189, 133),
+                      // Color.fromARGB(255, 117, 178, 219)
+                    ]
+                  : [
+                      const Color.fromARGB(255, 18, 18, 18),
+                      const Color.fromARGB(255, 50, 50, 50),
+                      const Color.fromARGB(255, 90, 90, 90),
+                    ],
               begin: Alignment.centerLeft,
               end: Alignment.centerRight,
             ),

@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/constants/padding_left_right.dart';
+import 'package:flutter_portfolio/provider/theme_provider.dart';
+import 'package:provider/provider.dart';
 
 class HeaderViewHeader extends StatelessWidget {
   final GlobalKey<ScaffoldState> scaffoldKey;
@@ -9,6 +11,8 @@ class HeaderViewHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData themeDataValue = context.watch<ThemeProvider>().themeData;
+
     double screenWidthMob = MediaQuery.of(context).size.width;
     double paddingValue = PaddingLeftRight.getPaddingleftRight(screenWidthMob);
     return SafeArea(
@@ -19,7 +23,7 @@ class HeaderViewHeader extends StatelessWidget {
           top: 10,
         ),
         decoration: BoxDecoration(
-          color: const Color.fromARGB(255, 243, 223, 192),
+          color: themeDataValue.primaryColorLight,
           borderRadius: BorderRadius.circular(7),
         ),
         width: double.infinity,

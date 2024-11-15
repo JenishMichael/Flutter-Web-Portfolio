@@ -36,7 +36,7 @@ class Separator extends StatelessWidget {
           child: RichText(
             text: TextSpan(
               style: const TextStyle(
-                color: CustomColor.titleDarkblue,
+                color: CustomColor.AppBarBtnLight,
                 fontFamily: "NewTegomin",
                 fontSize: 25,
                 fontWeight: FontWeight.bold,

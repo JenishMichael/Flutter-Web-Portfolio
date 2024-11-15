@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_portfolio/provider/theme_provider.dart';
 import 'package:flutter_portfolio/screens/desktop_screen.dart';
 import 'package:flutter_portfolio/screens/mobile_screen.dart';
 import 'package:flutter_portfolio/screens/tablet_screen.dart';
@@ -6,6 +7,7 @@ import 'package:flutter_portfolio/screens/tablet_screen.dart';
 import 'package:flutter_portfolio/widgets/drawer_app_bar.dart';
 import 'package:flutter_portfolio/widgets/loading.dart';
 import 'package:flutter_portfolio/widgets/responsive_builder.dart';
+import 'package:provider/provider.dart';
 
 final GlobalKey homeKey = GlobalKey();
 final GlobalKey aboutMeKey = GlobalKey();
@@ -28,39 +30,42 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: scaffoldKey,
-      endDrawer: Drawer(
-        backgroundColor: const Color(0xFFFFC18A),
-        child: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Colors.white,
+    return Consumer<ThemeProvider>(
+      builder: (context, ThemeProviderValue, child) => Scaffold(
+        backgroundColor: ThemeProviderValue.themeData.scaffoldBackgroundColor,
+        key: scaffoldKey,
+        endDrawer: Drawer(
+          backgroundColor: const Color(0xFFFFC18A),
+          child: Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Colors.white,
 
-                Color.fromARGB(255, 244, 219, 181),
-                // Color.fromARGB(255, 117, 178, 219)
-              ],
-              begin: Alignment.centerLeft,
-              end: Alignment.centerRight,
+                  Color.fromARGB(255, 244, 219, 181),
+                  // Color.fromARGB(255, 117, 178, 219)
+                ],
+                begin: Alignment.centerLeft,
+                end: Alignment.centerRight,
+              ),
             ),
+            child: const DrawerAppBar(),
           ),
-          child: const DrawerAppBar(),
         ),
+        body: FutureBuilder(
+            future: fetchDate(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Loading();
+              } else {
+                return ResponsiveBuilder(
+                  mobile: MobileScreen(scaffoldKey: scaffoldKey),
+                  tablet: TabletScreen(scaffoldKey: scaffoldKey),
+                  desktop: DesktopScreen(scaffoldKey: scaffoldKey),
+                );
+              }
+            }),
       ),
-      body: FutureBuilder(
-          future: fetchDate(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Loading();
-            } else {
-              return ResponsiveBuilder(
-                mobile: MobileScreen(scaffoldKey: scaffoldKey),
-                tablet: TabletScreen(scaffoldKey: scaffoldKey),
-                desktop: DesktopScreen(scaffoldKey: scaffoldKey),
-              );
-            }
-          }),
     );
   }
 }

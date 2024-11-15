@@ -2,14 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/constants/custom_color.dart';
 import 'package:flutter_portfolio/constants/heading_list.dart';
 import 'package:flutter_portfolio/constants/padding_left_right.dart';
+import 'package:flutter_portfolio/provider/theme_provider.dart';
 import 'package:flutter_portfolio/screens/home/home.dart';
+import 'package:flutter_portfolio/widgets/themes_data.dart';
 import 'dart:html' as html;
+
+import 'package:provider/provider.dart';
 
 class DesktopViewHeader extends StatelessWidget {
   const DesktopViewHeader({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData themeDataValue = context.watch<ThemeProvider>().themeData;
+
     double screenWidthMob = MediaQuery.of(context).size.width;
     double paddingValue = PaddingLeftRight.getPaddingleftRight(screenWidthMob);
 
@@ -21,7 +27,7 @@ class DesktopViewHeader extends StatelessWidget {
           top: 10,
         ),
         decoration: BoxDecoration(
-          color: const Color.fromARGB(255, 243, 223, 192),
+          color: themeDataValue.primaryColorLight,
           borderRadius: BorderRadius.circular(7),
         ),
         width: double.infinity,
@@ -96,14 +102,16 @@ class DesktopViewHeader extends StatelessWidget {
                       },
                       style: ButtonStyle(
                         backgroundColor: WidgetStateProperty.all(
-                            const Color.fromARGB(255, 243, 223, 192)),
+                            themeDataValue.primaryColorLight),
                       ),
                       child: Text(
                         headingList[i],
-                        style: const TextStyle(
-                          color: CustomColor.titleDarkblue,
-                          fontWeight: FontWeight.w500,
-                          letterSpacing: 1,
+                        style: TextStyle(
+                          color: (themeDataValue == lightTheme)
+                              ? CustomColor.AppBarBtnLight
+                              : CustomColor.AppBarBtnDark,
+                          fontWeight: FontWeight.w600,
+                          letterSpacing: 1.2,
                         ),
                       ),
                     ),
@@ -121,10 +129,20 @@ class DesktopViewHeader extends StatelessWidget {
                     child: Text(
                       headingList[headingList.length - 1],
                       style: const TextStyle(
-                        fontWeight: FontWeight.w500,
+                        fontWeight: FontWeight.w600,
+                        letterSpacing: 1,
                       ),
                     ),
                   ),
+                ),
+                Switch(
+                  value: context
+                      .watch<ThemeProvider>()
+                      .isDarkMode, // Bind the current mode
+
+                  onChanged: (value) {
+                    context.read<ThemeProvider>().toggle(); // Toggle theme
+                  },
                 ),
               ],
             ),

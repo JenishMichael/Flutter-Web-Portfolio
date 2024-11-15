@@ -34,7 +34,7 @@ class TabletHome extends StatelessWidget {
                     Text(
                       "Hy! I Am\nJenish Michael Dev",
                       style: TextStyle(
-                          color: CustomColor.titleDarkblue,
+                          color: CustomColor.AppBarBtnLight,
                           fontSize: fontSizeOfTitle,
                           fontWeight: FontWeight.w600),
                     ),

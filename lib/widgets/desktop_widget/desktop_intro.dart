@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/constants/custom_color.dart';
 import 'package:flutter_portfolio/constants/padding_left_right.dart';
+import 'package:flutter_portfolio/provider/theme_provider.dart';
 import 'package:flutter_portfolio/screens/home/home.dart';
+import 'package:flutter_portfolio/widgets/themes_data.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DesktopIntro extends StatelessWidget {
@@ -9,6 +12,7 @@ class DesktopIntro extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeData themeDataValue = context.watch<ThemeProvider>().themeData;
     double screenWidthMob = MediaQuery.of(context).size.width;
     double paddingValue = PaddingLeftRight.getPaddingleftRight(screenWidthMob);
     return Column(
@@ -26,16 +30,18 @@ class DesktopIntro extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Hy! I Am\nJenish Michael Dev",
+                      "Hy! I Am\nJenish Michael ",
                       style: TextStyle(
-                          color: CustomColor.titleDarkblue,
+                          color: (themeDataValue == lightTheme)
+                              ? CustomColor.AppBarBtnLight
+                              : CustomColor.AppBarBtnDark,
                           fontSize: screenWidthMob < 1500 ? 35 : 45,
                           fontWeight: FontWeight.w600),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 5),
                       child: Text(
-                        "I’m a software developer with expertise in Java and Flutter.",
+                        "A software developer with expertise in Java and Flutter.",
                         style: TextStyle(
                           fontSize: screenWidthMob < 1500 ? 15 : 18,
                         ),
@@ -75,12 +81,19 @@ class DesktopIntro extends StatelessWidget {
           ),
         ),
         Container(
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [
-                Colors.white,
-                Color.fromARGB(255, 226, 189, 133),
-              ],
+              colors: (themeDataValue == lightTheme)
+                  ? [
+                      Colors.white,
+                      const Color.fromARGB(255, 226, 189, 133),
+                      // Color.fromARGB(255, 117, 178, 219)
+                    ]
+                  : [
+                      const Color.fromARGB(255, 18, 18, 18),
+                      const Color.fromARGB(255, 35, 35, 35),
+                      const Color.fromARGB(255, 60, 60, 60),
+                    ],
               begin: Alignment.centerLeft,
               end: Alignment.centerRight,
             ),
@@ -99,10 +112,14 @@ class DesktopIntro extends StatelessWidget {
                       await launchUrl(uri);
                     }
                   },
-                  icon: const Image(
-                    image: AssetImage(
-                      "assets/image/GitHub.png",
-                    ),
+                  icon: Image(
+                    image: (themeDataValue == lightTheme)
+                        ? const AssetImage(
+                            "assets/image/GitHub.png",
+                          )
+                        : const AssetImage(
+                            "assets/image/GithubWhite30.png",
+                          ),
                   ),
                 ),
                 IconButton(
@@ -113,10 +130,14 @@ class DesktopIntro extends StatelessWidget {
                       await launchUrl(uri);
                     }
                   },
-                  icon: const Image(
-                    image: AssetImage(
-                      "assets/image/LinkedIn.png",
-                    ),
+                  icon: Image(
+                    image: (themeDataValue == lightTheme)
+                        ? const AssetImage(
+                            "assets/image/LinkedIn.png",
+                          )
+                        : const AssetImage(
+                            "assets/image/LinkedInWhite30.png",
+                          ),
                   ),
                 ),
               ],

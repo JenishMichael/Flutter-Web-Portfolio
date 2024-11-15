@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/constants/cv.dart';
 import 'package:flutter_portfolio/constants/padding_left_right.dart';
+import 'package:flutter_portfolio/provider/theme_provider.dart';
 import 'package:flutter_portfolio/screens/home/home.dart';
 import 'package:flutter_portfolio/widgets/separtor.dart';
+import 'package:flutter_portfolio/widgets/themes_data.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DesktopAboutMe extends StatelessWidget {
@@ -10,6 +13,8 @@ class DesktopAboutMe extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeData themeDataValue = context.watch<ThemeProvider>().themeData;
+
     double screenWidthMob = MediaQuery.of(context).size.width;
     double paddingValue = PaddingLeftRight.getPaddingleftRight(screenWidthMob);
     return Container(
@@ -56,13 +61,19 @@ class DesktopAboutMe extends StatelessWidget {
             ),
           ),
           Container(
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [
-                  Colors.white,
-                  Color.fromARGB(255, 226, 189, 133),
-                  // Color.fromARGB(255, 117, 178, 219)
-                ],
+                colors: (themeDataValue == lightTheme)
+                    ? [
+                        Colors.white,
+                        const Color.fromARGB(255, 226, 189, 133),
+                        // Color.fromARGB(255, 117, 178, 219)
+                      ]
+                    : [
+                        const Color.fromARGB(255, 18, 18, 18),
+                        const Color.fromARGB(255, 35, 35, 35),
+                        const Color.fromARGB(255, 60, 60, 60),
+                      ],
                 begin: Alignment.centerLeft,
                 end: Alignment.centerRight,
               ),
