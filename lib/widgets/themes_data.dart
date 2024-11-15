@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_portfolio/constants/custom_color.dart';
 
 ThemeData lightTheme = ThemeData(
   brightness: Brightness.light,
+  primaryColor: CustomColor.AppBarBtnLight,
   scaffoldBackgroundColor: Colors.white, //For Page Background
   //
   primaryColorLight:
@@ -36,6 +38,8 @@ ThemeData lightTheme = ThemeData(
 ThemeData darkTheme = ThemeData(
   scaffoldBackgroundColor:
       const Color.fromARGB(255, 18, 18, 18), //For Page Background
+  primaryColor: Colors.white,
+
   brightness: Brightness.dark,
   primaryColorLight: const Color.fromARGB(255, 50, 50, 50),
   // const Color.fromARGB(255, 31, 31, 31), //For AppBar background

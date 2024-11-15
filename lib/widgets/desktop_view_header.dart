@@ -107,11 +107,9 @@ class DesktopViewHeader extends StatelessWidget {
                       child: Text(
                         headingList[i],
                         style: TextStyle(
-                          color: (themeDataValue == lightTheme)
-                              ? CustomColor.AppBarBtnLight
-                              : CustomColor.AppBarBtnDark,
+                          color: themeDataValue.primaryColor,
                           fontWeight: FontWeight.w600,
-                          letterSpacing: 1.2,
+                          letterSpacing: 1,
                         ),
                       ),
                     ),

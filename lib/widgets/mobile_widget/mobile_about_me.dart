@@ -35,9 +35,10 @@ class MobileAboutMe extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(top: 20, bottom: 35),
                   child: RichText(
-                    text: const TextSpan(
-                      style: TextStyle(fontSize: 16, color: Colors.black),
-                      children: [
+                    text: TextSpan(
+                      style: TextStyle(
+                          fontSize: 16, color: themeDataValue.primaryColor),
+                      children: const [
                         TextSpan(
                           text: "Hi, I’m Jenish Michael ",
                           style: TextStyle(
@@ -70,6 +71,7 @@ class MobileAboutMe extends StatelessWidget {
                     : [
                         const Color.fromARGB(255, 18, 18, 18),
                         const Color.fromARGB(255, 50, 50, 50),
+                        const Color.fromARGB(255, 90, 90, 90),
                       ],
                 begin: Alignment.centerLeft,
                 end: Alignment.centerRight,
@@ -88,7 +90,7 @@ class MobileAboutMe extends StatelessWidget {
                         return CV.downloadCv();
                       },
                       child: const Text(
-                        "Download CV",
+                        "DOWNLOAD CV",
                       ),
                     ),
                   ),

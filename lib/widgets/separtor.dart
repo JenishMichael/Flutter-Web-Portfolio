@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/constants/custom_color.dart';
+import 'package:flutter_portfolio/provider/theme_provider.dart';
+import 'package:flutter_portfolio/widgets/themes_data.dart';
+import 'package:provider/provider.dart';
 
 class Separator extends StatelessWidget {
   final Color gradient1;
@@ -17,6 +20,8 @@ class Separator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeData themeDataValue = context.watch<ThemeProvider>().themeData;
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -35,8 +40,9 @@ class Separator extends StatelessWidget {
           padding: const EdgeInsets.all(20),
           child: RichText(
             text: TextSpan(
-              style: const TextStyle(
-                color: CustomColor.AppBarBtnLight,
+              style: TextStyle(
+                // color: //CustomColor.AppBarBtnLight,
+                color: themeDataValue.primaryColor,
                 fontFamily: "NewTegomin",
                 fontSize: 25,
                 fontWeight: FontWeight.bold,

@@ -7,6 +7,7 @@ import 'package:flutter_portfolio/screens/tablet_screen.dart';
 import 'package:flutter_portfolio/widgets/drawer_app_bar.dart';
 import 'package:flutter_portfolio/widgets/loading.dart';
 import 'package:flutter_portfolio/widgets/responsive_builder.dart';
+import 'package:flutter_portfolio/widgets/themes_data.dart';
 import 'package:provider/provider.dart';
 
 final GlobalKey homeKey = GlobalKey();
@@ -37,14 +38,18 @@ class _HomeState extends State<Home> {
         endDrawer: Drawer(
           backgroundColor: const Color(0xFFFFC18A),
           child: Container(
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [
-                  Colors.white,
-
-                  Color.fromARGB(255, 244, 219, 181),
-                  // Color.fromARGB(255, 117, 178, 219)
-                ],
+                colors: (ThemeProviderValue.themeData == lightTheme)
+                    ? [
+                        Colors.white,
+                        const Color.fromARGB(255, 244, 219, 181),
+                      ]
+                    : [
+                        const Color.fromARGB(255, 18, 18, 18),
+                        const Color.fromARGB(255, 35, 35, 35),
+                        const Color.fromARGB(255, 60, 60, 60),
+                      ],
                 begin: Alignment.centerLeft,
                 end: Alignment.centerRight,
               ),

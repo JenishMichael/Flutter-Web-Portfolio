@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_portfolio/constants/custom_color.dart';
 import 'package:flutter_portfolio/constants/cv.dart';
 import 'package:flutter_portfolio/constants/padding_left_right.dart';
 import 'package:flutter_portfolio/provider/theme_provider.dart';
@@ -37,8 +38,9 @@ class DesktopAboutMe extends StatelessWidget {
                   child: RichText(
                     text: TextSpan(
                       style: TextStyle(
-                          fontSize: screenWidthMob < 1500 ? 16 : 18,
-                          color: Colors.black),
+                        fontSize: screenWidthMob < 1500 ? 16 : 18,
+                        color: themeDataValue.primaryColor,
+                      ),
                       children: const [
                         TextSpan(
                           text: "Hi, I’m Jenish Michael ",
@@ -71,8 +73,8 @@ class DesktopAboutMe extends StatelessWidget {
                       ]
                     : [
                         const Color.fromARGB(255, 18, 18, 18),
-                        const Color.fromARGB(255, 35, 35, 35),
-                        const Color.fromARGB(255, 60, 60, 60),
+                        const Color.fromARGB(255, 50, 50, 50),
+                        const Color.fromARGB(255, 90, 90, 90),
                       ],
                 begin: Alignment.centerLeft,
                 end: Alignment.centerRight,
@@ -94,7 +96,7 @@ class DesktopAboutMe extends StatelessWidget {
                           return CV.downloadCv();
                         },
                         child: const Text(
-                          "Download CV",
+                          "DOWNLOAD CV",
                         ),
                       ),
                     ),

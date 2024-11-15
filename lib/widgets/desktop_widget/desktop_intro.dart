@@ -32,9 +32,7 @@ class DesktopIntro extends StatelessWidget {
                     Text(
                       "Hy! I Am\nJenish Michael ",
                       style: TextStyle(
-                          color: (themeDataValue == lightTheme)
-                              ? CustomColor.AppBarBtnLight
-                              : CustomColor.AppBarBtnDark,
+                          color: themeDataValue.primaryColor,
                           fontSize: screenWidthMob < 1500 ? 35 : 45,
                           fontWeight: FontWeight.w600),
                     ),
@@ -61,7 +59,7 @@ class DesktopIntro extends StatelessWidget {
                             );
                           },
                           child: const Text(
-                            "Contact Me",
+                            "CONTACT ME",
                           ),
                         ),
                       ),
@@ -91,8 +89,8 @@ class DesktopIntro extends StatelessWidget {
                     ]
                   : [
                       const Color.fromARGB(255, 18, 18, 18),
-                      const Color.fromARGB(255, 35, 35, 35),
-                      const Color.fromARGB(255, 60, 60, 60),
+                      const Color.fromARGB(255, 50, 50, 50),
+                      const Color.fromARGB(255, 90, 90, 90),
                     ],
               begin: Alignment.centerLeft,
               end: Alignment.centerRight,

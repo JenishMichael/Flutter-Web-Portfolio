@@ -1,7 +1,7 @@
 List<String> headingList = [
-  "Home",
-  "About Me",
-  "Skills",
-  "Projects",
-  "Contact Me"
+  "HOME",
+  "ABOUT ME",
+  "SKILLS",
+  "PROJECTS",
+  "CONTACT ME"
 ];

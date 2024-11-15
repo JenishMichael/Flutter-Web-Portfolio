@@ -27,10 +27,10 @@ class IntroMessage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               //
-              const Text(
-                "Hy! I Am\nJenish Michael Dev",
+              Text(
+                "Hy! I Am\nJenish Michael ",
                 style: TextStyle(
-                    color: CustomColor.AppBarBtnLight,
+                    color: themeDataValue.primaryColor,
                     fontSize: 30,
                     fontWeight: FontWeight.w600),
               ),
@@ -38,7 +38,7 @@ class IntroMessage extends StatelessWidget {
               const Padding(
                 padding: EdgeInsets.only(top: 3),
                 child: Text(
-                  "I’m a software developer with expertise in Java and Flutter.",
+                  "A software developer with expertise in Java and Flutter.",
                   style: TextStyle(
                     fontSize: 12,
                   ),
@@ -56,7 +56,7 @@ class IntroMessage extends StatelessWidget {
                     );
                   },
                   child: const Text(
-                    "Contact Me",
+                    "CONTACT ME",
                   ),
                 ),
               ),
@@ -99,10 +99,14 @@ class IntroMessage extends StatelessWidget {
                       print('Could not launch $url');
                     }
                   },
-                  icon: const Image(
-                    image: AssetImage(
-                      "assets/image/GitHub.png",
-                    ),
+                  icon: Image(
+                    image: (themeDataValue == lightTheme)
+                        ? const AssetImage(
+                            "assets/image/GitHub.png",
+                          )
+                        : const AssetImage(
+                            "assets/image/GitHubWhite30.png",
+                          ),
                   ),
                 ),
                 IconButton(
@@ -113,10 +117,14 @@ class IntroMessage extends StatelessWidget {
                       await launchUrl(uri);
                     }
                   },
-                  icon: const Image(
-                    image: AssetImage(
-                      "assets/image/LinkedIn.png",
-                    ),
+                  icon: Image(
+                    image: (themeDataValue == lightTheme)
+                        ? const AssetImage(
+                            "assets/image/LinkedIn.png",
+                          )
+                        : const AssetImage(
+                            "assets/image/LinkedInWhite30.png",
+                          ),
                   ),
                 ),
               ],
